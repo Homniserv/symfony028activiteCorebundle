@@ -1,0 +1,3 @@
+moueza_core_homepage:
+    path:     /
+    defaults: { _controller: mouezaCoreBundle:Default:index }
