@@ -1,10 +1,10 @@
 oc_platform:
     resource: "@OCPlatformBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /platform
 
 moueza_core:
     resource: "@mouezaCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /core
 
 app:
     resource: '@AppBundle/Controller/'
