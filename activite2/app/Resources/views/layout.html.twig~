@@ -13,38 +13,28 @@ class AdvertController extends Controller
 {
   // …
 
-   public function menu1Action()
+ 
+
+
+    public function indexAction()
   {
-   return $this->render('OCPlatformBundle:Advert:menu.html.twig');
+    return new Response("Hello World !");
   }
 
-   public function menu2Action()
+ public function viewAction($id)
   {
-    // On fixe en dur une liste ici, bien entendu par la suite
-    // on la récupérera depuis la BDD !
-    $listAdverts = array(
-      array('id' => 2, 'title' => 'Recherche développeur Symfony'),
-      array('id' => 5, 'title' => 'Mission de webmaster'),
-      array('id' => 9, 'title' => 'Offre de stage webdesigner')
+    return new Response("Affichage de l'annonce d'id : ".$id);
+  }
+      // On injecte la requête dans les arguments de la méthode
+    /*https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621111-les-controleurs-avec-symfony*/
+  public function viewAction($id, Request $request)
+  {
+    // On récupère notre paramètre tag
+    $tag = $request->query->get('tag');
+
+    return new Response(
+      "Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
     );
-
-    return $this->render('OCPlatformBundle:Advert:menu.html.twig', array(
-      // Tout l'intérêt est ici : le contrôleur passe
-      // les variables nécessaires au template !
-      'listAdverts' => $listAdverts
-    ));
-  }
-
-
-    public function index1Action()
-  {
-    // return new Response("Hello World !");
-
-
-    /*https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621582-le-moteur-de-templates-twig*/
-    return $this->render('OCPlatformBundle:Advert:index.html.twig', array(
-  'listAdverts' => array()
-));
   }
 
 
@@ -53,9 +43,7 @@ class AdvertController extends Controller
 
 
 
-
-
-  public function index2Action($page)
+  public function indexAction($page)
   {
     // On ne sait pas combien de pages il y a
     // Mais on sait qu'une page doit être supérieure ou égale à 1
@@ -71,15 +59,7 @@ class AdvertController extends Controller
     return $this->render('OCPlatformBundle:Advert:index.html.twig');
   }
 
-
-
-
-  
-  /* public function viewAction($id)
-  {
-    return new Response("Affichage de l'annonce d'id : ".$id);
-    }*/
-  public function view1Action($id)
+  public function viewAction($id)
   {
     // Ici, on récupérera l'annonce correspondante à l'id $id
 
@@ -88,24 +68,6 @@ class AdvertController extends Controller
     ));
   }
 
-  // On injecte la requête dans les arguments de la méthode
-    /*https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621111-les-controleurs-avec-symfony*/
-  public function view2Action($id, Request $request)
-  {
-    // On récupère notre paramètre tag
-    $tag = $request->query->get('tag');
-
-    return new Response(
-      "Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
-    );
-  }
- 
-
-
-
-
-
-  
   public function addAction(Request $request)
   {
     // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
@@ -146,8 +108,4 @@ class AdvertController extends Controller
 
     return $this->render('OCPlatformBundle:Advert:delete.html.twig');
   }
-
-
-
-
 }
