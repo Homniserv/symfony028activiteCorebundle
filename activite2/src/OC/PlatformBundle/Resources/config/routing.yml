@@ -17,7 +17,7 @@ oc_platform_home:
 oc_platform_view:
     path:      /advert/{id}
     defaults:
-        _controller: OCPlatformBundle:Advert:view
+        _controller: OCPlatformBundle:Advert:view2
     requirements:
         id: \d+
 
