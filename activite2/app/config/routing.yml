@@ -4,7 +4,7 @@ oc_platform:
 
 moueza_core:
     resource: "@mouezaCoreBundle/Resources/config/routing.yml"
-    prefix:   /core
+    prefix:   
 
 app:
     resource: '@AppBundle/Controller/'

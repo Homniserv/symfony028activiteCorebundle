@@ -1,5 +1,9 @@
 #moueza CoreBundle
 
 moueza_core_homepage:
+    path:     /mouezacoreindex
+    defaults: { _controller: mouezaCoreBundle:Default:index }
+
+mouezacorewelcomepage:
     path:     /
     defaults: { _controller: mouezaCoreBundle:Default:index }
