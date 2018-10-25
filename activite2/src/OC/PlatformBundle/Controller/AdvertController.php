@@ -1,6 +1,6 @@
 <?php
 
-// src/OC/PlatformBundle/Controller/AdvertController.php
+  // src/OC/PlatformBundle/Controller/AdvertController.php
 
 namespace OC\PlatformBundle\Controller;
 
@@ -13,38 +13,38 @@ class AdvertController extends Controller
 {
   // …
 
-   public function menu1Action()
+  public function menu1Action()
   {
-   return $this->render('OCPlatformBundle:Advert:menu.html.twig');
+    return $this->render('@OCPlatform/Advert/menu.html.twig');
   }
 
-   public function menu2Action()
+  public function menu2Action()
   {
     // On fixe en dur une liste ici, bien entendu par la suite
     // on la récupérera depuis la BDD !
     $listAdverts = array(
-      array('id' => 2, 'title' => 'Recherche développeur Symfony'),
-      array('id' => 5, 'title' => 'Mission de webmaster'),
-      array('id' => 9, 'title' => 'Offre de stage webdesigner')
-    );
+			 array('id' => 2, 'title' => 'Recherche développeur Symfony'),
+			 array('id' => 5, 'title' => 'Mission de webmaster'),
+			 array('id' => 9, 'title' => 'Offre de stage webdesigner')
+			 );
 
-    return $this->render('OCPlatformBundle:Advert:menu.html.twig', array(
-      // Tout l'intérêt est ici : le contrôleur passe
-      // les variables nécessaires au template !
-      'listAdverts' => $listAdverts
-    ));
+    return $this->render('@OCPlatform/Advert/menu.html.twig', array(
+								    // Tout l'intérêt est ici : le contrôleur passe
+								    // les variables nécessaires au template !
+								    'listAdverts' => $listAdverts
+								    ));
   }
 
 
-    public function index1Action()
+  public function index1Action()
   {
     // return new Response("Hello World !");
 
 
     /*https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621582-le-moteur-de-templates-twig*/
-    return $this->render('OCPlatformBundle:Advert:index.html.twig', array(
-  'listAdverts' => array()
-));
+    return $this->render('@OCPlatform/Advert/index.html.twig', array(
+								     'listAdverts' => array()
+								     ));
   }
 
 
@@ -68,7 +68,7 @@ class AdvertController extends Controller
     // Ici, on récupérera la liste des annonces, puis on la passera au template
 
     // Mais pour l'instant, on ne fait qu'appeler le template
-    return $this->render('OCPlatformBundle:Advert:index.html.twig');
+    return $this->render('@OCPlatform/Advert/index.html.twig');
   }
 
 
@@ -76,28 +76,28 @@ class AdvertController extends Controller
 
   
   /* public function viewAction($id)
-  {
-    return new Response("Affichage de l'annonce d'id : ".$id);
-    }*/
+     {
+     return new Response("Affichage de l'annonce d'id : ".$id);
+     }*/
   public function view1Action($id)
   {
     // Ici, on récupérera l'annonce correspondante à l'id $id
 
-    return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
-      'id' => $id
-    ));
+    return $this->render('@OCPlatform/Advert/view.html.twig', array(
+								    'id' => $id
+								    ));
   }
 
   // On injecte la requête dans les arguments de la méthode
-    /*https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621111-les-controleurs-avec-symfony*/
+  /*https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621111-les-controleurs-avec-symfony*/
   public function view2Action($id, Request $request)
   {
     // On récupère notre paramètre tag
     $tag = $request->query->get('tag');
 
     return new Response(
-      "Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
-    );
+			"Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
+			);
   }
  
 
@@ -121,7 +121,7 @@ class AdvertController extends Controller
     }
 
     // Si on n'est pas en POST, alors on affiche le formulaire
-    return $this->render('OCPlatformBundle:Advert:add.html.twig');
+    return $this->render('@OCPlatform/Advert/add.html.twig');
   }
 
   public function editAction($id, Request $request)
@@ -135,7 +135,7 @@ class AdvertController extends Controller
       return $this->redirectToRoute('oc_platform_view', array('id' => 5));
     }
 
-    return $this->render('OCPlatformBundle:Advert:edit.html.twig');
+    return $this->render('@OCPlatform/Advert/edit.html.twig');
   }
 
   public function deleteAction($id)
@@ -144,7 +144,7 @@ class AdvertController extends Controller
 
     // Ici, on gérera la suppression de l'annonce en question
 
-    return $this->render('OCPlatformBundle:Advert:delete.html.twig');
+    return $this->render('@OCPlatform/Advert/delete.html.twig');
   }
 
 
