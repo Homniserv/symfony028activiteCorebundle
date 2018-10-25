@@ -1,5 +1,5 @@
 scenario
-    name "Scenario welcome"
+    name "Scenario /"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php"
 
     visit url('/')
@@ -9,12 +9,30 @@ scenario
 
 
 
-scenario
-    name "Scenario noNamespacePlatforms"
-    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/platfo"
 
-    visit url('http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/platform/1')
+
+scenario
+    name "Scenario /platform/1"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+
+    visit url('/platform/1')
         expect status_code() == 200
         follow_redirects
 
 
+scenario
+    name "Scenario /1"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+
+    visit url('/1')
+        expect status_code() == 200
+        follow_redirects
+
+
+scenario
+    name "Scenario /2"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+
+    visit url('/2')
+        expect status_code() == 200
+        follow_redirects
