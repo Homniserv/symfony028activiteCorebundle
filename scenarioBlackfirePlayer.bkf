@@ -1,0 +1,15 @@
+scenario
+    name "Scenario Name"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php"
+
+    visit url('/')
+        #expect status_code() == 200
+        follow_redirects
+
+    visit url('/platform/1')
+        #expect status_code() == 200
+        follow_redirects
+
+    visit url('/platfor')
+        #expect status_code() == 200
+        follow_redirects   
