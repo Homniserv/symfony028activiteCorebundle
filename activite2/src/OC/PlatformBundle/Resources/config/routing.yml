@@ -40,3 +40,32 @@ oc_platform_delete:
         _controller: OCPlatformBundle:Advert:delete
     requirements:
         id: \d+
+
+
+
+
+oc_platform_view_slugZF:
+    path:      /{year}/{slug}.{format}
+    defaults:
+        _controller: OCPlatformBundle:Advert:viewSlug
+    requirements:
+        year: \d+
+        slug: "a"
+        format: "zf"
+
+oc_platform_view_slugF:
+    path:      /{year}/{slug}.{format}
+    defaults:
+        _controller: OCPlatformBundle:Advert:viewSlug
+    requirements:
+        year: \d+
+        slug: "[a-z]"
+        format: "f"
+oc_platform_view_slug:
+    path:      /{year}/{slug}.{format}
+    defaults:
+        _controller: OCPlatformBundle:Advert:viewSlug
+    requirements:
+        year: \d+
+        slug: "[a-zA-Z]+"
+        format: "[a-z]+"

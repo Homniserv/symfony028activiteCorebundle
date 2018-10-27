@@ -21,18 +21,74 @@ scenario
 
 
 scenario
-    name "Scenario /1"
+    name "Scenario /platform/"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/')
+        expect status_code() == 200
+        follow_redirects
+scenario
+    name "Scenario /platform/advert/1"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
 
-    visit url('/1')
+    visit url('/platform/advert/1')
+        expect status_code() == 200
+        follow_redirects
+
+scenario
+    name "Scenario /platform/advert/100"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/advert/100')
         expect status_code() == 200
         follow_redirects
 
 
 scenario
-    name "Scenario /2"
+    name "Scenario slug /platform/2011/webmaster-aguerri.html0"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
-
-    visit url('/2')
+    visit url('/platform/2011/webmaster-aguerri.html')
+        expect status_code() != 200
+        follow_redirects
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html2"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2012/symfony.xml')
         expect status_code() == 200
         follow_redirects
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html3"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2011/webmaster.aguerri.html')
+        expect status_code() != 200
+        follow_redirects
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html4"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2011/a.f')
+        expect status_code() == 200
+        follow_redirects
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html5"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2011/ab.fe')
+        expect status_code() == 200
+        follow_redirects
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html6"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2011/ab.feg')
+        expect status_code() == 200
+        follow_redirects
+    
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html7"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2011/abF.feg')
+        expect status_code() == 200
+        follow_redirects
+scenario
+    name "Scenario slug /platform/2011/webmaster-aguerri.html8"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/2011/ab.fegG')
+        expect status_code() != 200
+        follow_redirects
+    
