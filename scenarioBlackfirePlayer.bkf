@@ -1,7 +1,6 @@
 scenario
     name "Scenario /"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php"
-
     visit url('/')
         expect status_code() == 200
         follow_redirects
@@ -14,7 +13,6 @@ scenario
 scenario
     name "Scenario /platform/1"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
-
     visit url('/platform/1')
         expect status_code() == 200
         follow_redirects
@@ -26,10 +24,10 @@ scenario
     visit url('/platform/')
         expect status_code() == 200
         follow_redirects
+
 scenario
     name "Scenario /platform/advert/1"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
-
     visit url('/platform/advert/1')
         expect status_code() == 200
         follow_redirects
@@ -38,7 +36,7 @@ scenario
     name "Scenario /platform/advert/100"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
     visit url('/platform/advert/100')
-        expect status_code() == 200
+        expect status_code() != 200
         follow_redirects
 
 
@@ -48,12 +46,14 @@ scenario
     visit url('/platform/2011/webmaster-aguerri.html')
         expect status_code() != 200
         follow_redirects
+
 scenario
     name "Scenario slug /platform/2011/webmaster-aguerri.html2"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
     visit url('/platform/2012/symfony.xml')
         expect status_code() == 200
         follow_redirects
+
 scenario
     name "Scenario slug /platform/2011/webmaster-aguerri.html3"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
@@ -91,4 +91,15 @@ scenario
     visit url('/platform/2011/ab.fegG')
         expect status_code() != 200
         follow_redirects
-    
+scenario
+    name "Scenario add"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/add')
+        expect status_code() == 200
+        follow_redirects
+scenario
+    name "Scenario !add"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/addo')
+        expect status_code() != 200
+        follow_redirects

@@ -133,9 +133,43 @@ class AdvertController extends Controller
 			"Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
 			);
   }
+
+ 
+  //https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621582-le-moteur-de-templates-twig
+  public function view3Action($id,Request $request)
+  {
+    //   'id'      => $id,
+    $advert = array(
+		    'title'   => 'Recherche développpeur Symfony2',
+		    'id'      => 1,
+		    'author'  => 'Alexandre',
+		    'content' => 'Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…',
+		    'date'    => new \Datetime()
+		    );
+    $adverts = [];
+    array_push( $adverts,$advert);
+
+
+
+  
+    //  if ($id <= count($adverts)){
+    $advert = [];
+    $advert = $adverts[$id-1];
+    return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
+									 'advert' => $advert
+									 ));
  
 
+    // On récupère notre paramètre tag
+    $tag = $request->query->get('tag');
 
+    return new Response(
+			"Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
+			);
+    //  }
+    //else
+    //{}
+  }
 
 
 
@@ -182,12 +216,12 @@ class AdvertController extends Controller
   }
 
 
- public function viewSlugAction($slug, $year, $format)
-    {
-        return new Response(
-            "On pourrait afficher l'annonce correspondant au
+  public function viewSlugAction($slug, $year, $format)
+  {
+    return new Response(
+			"On pourrait afficher l'annonce correspondant au
             slug '".$slug."', créée en ".$year." et au format ".$format."."
-        );
-    }
+			);
+  }
 
 }
