@@ -125,3 +125,10 @@ scenario
         expect status_code() != 200
         follow_redirects
 
+scenario
+    name "Scenario delete/1"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/delete/1')
+        expect status_code() != 200
+        follow_redirects
+
