@@ -11,7 +11,35 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AdvertController extends Controller
 {
-  // …
+  public static  $static_listAdverts = [];
+  
+  public function __construct()
+  {
+    AdvertController::$static_listAdverts =   array(
+						    array(
+							  'title'   => 'Recherche développpeur Symfony',
+							  'id'      => 1,
+							  'author'  => 'Alexandre',
+							  'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
+							  'date'    => new \Datetime()),
+						    array(
+							  'title'   => 'Mission de webmaster',
+							  'id'      => 2,
+							  'author'  => 'Hugo',
+							  'content' => 'Nous recherchons un webmaster capable de maintenir notre site internet. Blabla…',
+							  'date'    => new \Datetime()),
+						    array(
+							  'title'   => 'Offre de stage webdesigner',
+							  'id'      => 3,
+							  'author'  => 'Mathieu',
+							  'content' => 'Nous proposons un poste pour webdesigner. Blabla…',
+							  'date'    => new \Datetime())
+						    );
+
+
+  }
+
+
 
   public function menu1Action()
   {
@@ -194,16 +222,38 @@ class AdvertController extends Controller
 
   public function editAction($id, Request $request)
   {
-    // Ici, on récupérera l'annonce correspondante à $id
+    /* // Ici, on récupérera l'annonce correspondante à $id */
 
-    // Même mécanisme que pour l'ajout
-    if ($request->isMethod('POST')) {
-      $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
+    /* // Même mécanisme que pour l'ajout */
+    /* if ($request->isMethod('POST')) { */
+    /*   $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.'); */
 
-      return $this->redirectToRoute('oc_platform_view', array('id' => 5));
-    }
+    /*   return $this->redirectToRoute('oc_platform_view', array('id' => 5)); */
+    /* } */
 
-    return $this->render('@OCPlatform/Advert/edit.html.twig');
+    /* return $this->render('@OCPlatform/Advert/edit.html.twig'); */
+    // ...
+    
+    /* $advert = array( */
+    /* 		    'title'   => 'Recherche développpeur Symfony', */
+    /* 		    'id'      => $id, */
+    /* 		    'author'  => 'Alexandre', */
+    /* 		    'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…', */
+    /* 		    'date'    => new \Datetime() */
+    /* 		    ); */
+
+    /* return $this->render('OCPlatformBundle:Advert:edit.html.twig', array( */
+    /* 									 'advert' => $advert */
+    /* 									 ) */
+    /* 			 ); */
+
+
+
+
+       return $this->render('OCPlatformBundle:Advert:edit.html.twig', array(
+									 'advert' => AdvertController::$static_listAdverts[$id-1]
+									 )
+			 );
   }
 
   public function deleteAction($id)

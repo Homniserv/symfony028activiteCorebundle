@@ -26,14 +26,14 @@ scenario
         follow_redirects
 
 scenario
-    name "Scenario /platform/advert/1"
+    name "Scenario view /platform/advert/1"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
     visit url('/platform/advert/1')
         expect status_code() == 200
         follow_redirects
 
 scenario
-    name "Scenario /platform/advert/100"
+    name "Scenario view /platform/advert/100"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
     visit url('/platform/advert/100')
         expect status_code() != 200
@@ -103,3 +103,25 @@ scenario
     visit url('/platform/addo')
         expect status_code() != 200
         follow_redirects
+scenario
+    name "Scenario edit/1"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/edit/1')
+        expect status_code() == 200
+        follow_redirects
+
+scenario
+    name "Scenario edit/3"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/edit/3')
+        expect status_code() == 200
+        follow_redirects
+
+
+scenario
+    name "Scenario edit/10"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/platform/edit/10')
+        expect status_code() != 200
+        follow_redirects
+
