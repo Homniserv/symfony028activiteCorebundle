@@ -17,5 +17,7 @@ EXPOSE 80
 ENV NAME World
 
 # Run app.py when the container launches
-#CMD ["curl", "http://localhost:8101"]
-#sudo docker run -dit --name running-s28v1 -p 8101:80 s28
+#CMD ["curl", "http://localhost:8100/symfony028activiteCorebundle/activite2/web/app_dev.php/"]  "http://localhost:8100  "http://localhost:8100/activite2
+#sudo docker run -dit --name running-s28v3 -p 8100:80 s28
+CMD ["echo", "inside is"]
+CMD ["ls", "/var/www/public-html/"]
