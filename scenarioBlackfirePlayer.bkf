@@ -95,7 +95,7 @@ scenario
     name "Scenario add"
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
     visit url('/platform/add')
-        expect status_code() == 200
+        expect status_code() == 302
         follow_redirects
 scenario
     name "Scenario !add"
@@ -130,5 +130,13 @@ scenario
     endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
     visit url('/platform/delete/1')
         expect status_code() != 200
+        follow_redirects
+
+
+scenario
+    name "Scenario contacts"
+    endpoint "http://localhost/symfony028activiteCorebundle/activite2/web/app_dev.php/"
+    visit url('/contacts')
+        expect status_code() == 302
         follow_redirects
 

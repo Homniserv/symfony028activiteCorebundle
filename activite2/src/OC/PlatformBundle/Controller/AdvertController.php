@@ -201,23 +201,60 @@ class AdvertController extends Controller
 
 
 
+ 
+ 
+  //https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621111-les-controleurs-avec-symfony
+  public function view4Action($id,Request $request)
+  {
+    //   'id'      => $id,
+    $advert = array(
+		    'title'   => 'Recherche développpeur Symfony2',
+		    'id'      => 1,
+		    'author'  => 'Alexandre',
+		    'content' => 'Nous recherchons un développeur Symfony2 débutant sur Lyon. Blabla…',
+		    'date'    => new \Datetime()
+		    );
+    $adverts = [];
+    array_push( $adverts,$advert);
+
+
+
+  
+    //  if ($id <= count($adverts)){
+    $advert = [];
+    $advert = $adverts[$id-1];
+      // On récupère notre paramètre tag
+    $tag = $request->query->get('tag');
+
+    return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
+									 'advert' => $advert,'id' => $id
+									 )
+			 );
+       //  }
+    //else
+    //{}
+  }
+
+
   
   public function addAction(Request $request)
   {
+    $id=1;
     // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
 
     // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
-    if ($request->isMethod('POST')) {
+    // if ($request->isMethod('POST')) {
       // Ici, on s'occupera de la création et de la gestion du formulaire
 
       $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+  $request->getSession()->getFlashBag()->add('notice', 'Oui bien enregistrée');
 
       // Puis on redirige vers la page de visualisation de cettte annonce
-      return $this->redirectToRoute('oc_platform_view', array('id' => 5));
-    }
+  return $this->redirectToRoute('oc_platform_view', array('id' => $id));
+      // }
 
     // Si on n'est pas en POST, alors on affiche le formulaire
-    return $this->render('@OCPlatform/Advert/add.html.twig');
+      //  return $this->render('@OCPlatform/Advert/add.html.twig');
   }
 
   public function editAction($id, Request $request)

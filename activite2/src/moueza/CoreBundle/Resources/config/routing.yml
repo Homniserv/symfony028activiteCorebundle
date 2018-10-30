@@ -7,3 +7,7 @@ moueza_core_homepage:
 mouezacorewelcomepage:
     path:     /
     defaults: { _controller: mouezaCoreBundle:Default:index }
+
+mouezacorecontacts:
+    path:     /contacts
+    defaults: { _controller: mouezaCoreBundle:Default:contacts }
